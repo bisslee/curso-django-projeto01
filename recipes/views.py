@@ -1,16 +1,17 @@
 
 from django.shortcuts import get_list_or_404, get_object_or_404, render
 
-from utils.factory import make_recipe
-
 from .models import Recipe
+
+USER_NAME_TEMP = 'Biss Lee'
+USER_GREETINGS_TEMP = 'Good night'
 
 
 def root(request):
     recipes = Recipe.objects.filter(is_publish=True).order_by('title')
     return render(request, 'recipes/pages/home.html', context={
-        'name': 'Biss Lee',
-        'greetins': 'Good night',
+        'name': USER_NAME_TEMP,
+        'greetins': USER_GREETINGS_TEMP,
         'recipes': recipes,
         'is_detail_page': False
     })
@@ -22,8 +23,8 @@ def categories(request, category_id):
 
     category_name = recipes[0].category.name
     return render(request, 'recipes/pages/category.html', context={
-        'name': 'Biss Lee',
-        'greetins': 'Good night',
+        'name': USER_NAME_TEMP,
+        'greetins': USER_GREETINGS_TEMP,
         'recipes': recipes,
         'is_detail_page': False,
         'category_name': category_name
