@@ -2,8 +2,13 @@
 {% block page_title %}Home{% endblock page_title %}
 {% block content %}
   <div class="main-content main-content-list container">
-  {% for recipe in recipes %}
-    {% include 'recipes/partials/content.html' %}
-  {% endfor %}  
+    {% for recipe in recipes %}
+      {% include 'recipes/partials/content.html' %}
+    {% empty %}
+      <div class="no-found m-y">
+          <h2>Não tem receitas cadastradas ainda!</h2>
+      </div>
+      
+    {% endfor %}  
   </div> 
 {% endblock content %} 

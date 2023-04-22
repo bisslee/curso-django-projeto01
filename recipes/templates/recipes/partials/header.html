@@ -1,10 +1,18 @@
 <div class="main-header-container">
     <div class="main-header container">
         <h1>
-            <a href="/" class="main-logo">
+            <a href="{% url 'recipes:home' %}" class="main-logo">
                 <i class="fa-solid fa-bowl-rice main-logo-icon"></i>
                 <i class="fa-solid fa-pizza-slice main-logo-icon"></i>
-                <span class="main-logo-text">Receitas&nbsp;&nbsp;</span>
+                <span class="main-logo-text">Receitas&nbsp;&nbsp;
+                    {% if category_name %}
+                        -&nbsp;&nbsp;{{category_name}}&nbsp;&nbsp;
+                    {% endif %}
+                    {% if recipe.title %}
+                    -&nbsp;&nbsp;{{recipe.title}}&nbsp;&nbsp;
+                    {% endif %}
+
+                </span>
                 <i class="fa-solid fa-wine-glass main-logo-icon"></i>
                 <i class="fa-solid fa-martini-glass-citrus main-logo-icon"></i>
             </a>
